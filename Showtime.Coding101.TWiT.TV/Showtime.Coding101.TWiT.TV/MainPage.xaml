@@ -1,0 +1,42 @@
+﻿<Page
+    x:Class="Showtime.Coding101.TWiT.TV.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Showtime.Coding101.TWiT.TV"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="17*"/>
+            <RowDefinition Height="463*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.RowSpan="1" Grid.Row="2">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+                <Button Command="{Binding RequestButtonCommand}" Content="Request"/>
+                <TextBlock HorizontalAlignment="Stretch" Text="{Binding ShowTitle}"/>
+            </StackPanel>
+            <Border BorderBrush="LightBlue" BorderThickness="1,1,1,1" Height="400" HorizontalAlignment="Stretch" VerticalAlignment="Top" >
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ItemsControl x:Name="episodeStack" Grid.Column="0">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Vertical" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                                    <TextBlock x:Name="EpisodeTitle" Height="30" Text="{Binding Title}"/>
+                                    <TextBlock x:Name="Space" Height="30" Text=" Aired:"/>
+                                    <TextBlock x:Name="AirDate" Height="30" Text="{Binding AiringDate}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Page>
